@@ -74,12 +74,12 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 + (ABAddressBook *) sharedAddressBook
 {
-    static ABAddressBook * __shared = nil;
+    static ABAddressBook * volatile __shared = nil;
     
     if ( __shared == nil )
     {
         ABAddressBook * tmp = [[ABAddressBook alloc] init];
-        if ( OSAtomicCompareAndSwapPtr(nil, tmp, &__shared) == false )
+        if ( OSAtomicCompareAndSwapPtr(nil, tmp, (void * volatile *)&__shared) == false )
             [tmp release];
     }
     
