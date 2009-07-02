@@ -3,3 +3,5 @@ h2. iPhone AddressBook Objective-C Wrapper APIs
 The classes in this project implement a (currently lightweight) wrapper around the iPhone's pure-C AddressBook framework. Currently it simply plays nicely with things like autorelease pools and implements other Objective-C paradigms such as property-based accessors. In the future I hope to make it look and behave in a manner similar to the ObjC AddressBook APIs in Mac OS X.
 
 This project was originally part of "AQToolkit":http://github.com/AlanQuatermain/aqtoolkit. For the brief history of this code prior to the start of this project, see that one.
+
+To file bugs, please see the corresponding "Lighthouse project":http://quatermain.lighthouseapp.com/projects/33023-iphonecontacts/overview.
