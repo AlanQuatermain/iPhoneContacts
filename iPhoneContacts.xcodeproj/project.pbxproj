@@ -21,6 +21,9 @@
 		389B3ED30FFD16F70070D43C /* ABRefInitialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC60FFD16F70070D43C /* ABRefInitialization.h */; };
 		389B3ED40FFD16F70070D43C /* AddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC70FFD16F70070D43C /* AddressBook.h */; };
 		389B3F240FFD17920070D43C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389B3F230FFD17920070D43C /* AddressBook.framework */; };
+		389B40940FFFEFA50070D43C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389B40930FFFEFA50070D43C /* AddressBookUI.framework */; };
+		389B409C0FFFF5220070D43C /* ABAddressBookUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B409A0FFFF5220070D43C /* ABAddressBookUI.h */; };
+		389B409D0FFFF5220070D43C /* ABAddressBookUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B409B0FFFF5220070D43C /* ABAddressBookUI.m */; };
 		AA747D9F0F9514B9006C5449 /* iPhoneContacts_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* iPhoneContacts_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +43,9 @@
 		389B3EC60FFD16F70070D43C /* ABRefInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRefInitialization.h; sourceTree = "<group>"; };
 		389B3EC70FFD16F70070D43C /* AddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBook.h; sourceTree = "<group>"; };
 		389B3F230FFD17920070D43C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		389B40930FFFEFA50070D43C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		389B409A0FFFF5220070D43C /* ABAddressBookUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddressBookUI.h; sourceTree = "<group>"; };
+		389B409B0FFFF5220070D43C /* ABAddressBookUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAddressBookUI.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* iPhoneContacts_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneContacts_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libAddressBookWrappers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAddressBookWrappers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +58,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				389B3F240FFD17920070D43C /* AddressBook.framework in Frameworks */,
+				389B40940FFFEFA50070D43C /* AddressBookUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,7 @@
 			children = (
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				389B3F230FFD17920070D43C /* AddressBook.framework */,
+				389B40930FFFEFA50070D43C /* AddressBookUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -102,6 +110,8 @@
 				389B3EC50FFD16F70070D43C /* ABRecord.m */,
 				389B3EC60FFD16F70070D43C /* ABRefInitialization.h */,
 				389B3EC70FFD16F70070D43C /* AddressBook.h */,
+				389B409A0FFFF5220070D43C /* ABAddressBookUI.h */,
+				389B409B0FFFF5220070D43C /* ABAddressBookUI.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -130,6 +140,7 @@
 				389B3ED10FFD16F70070D43C /* ABRecord.h in Headers */,
 				389B3ED30FFD16F70070D43C /* ABRefInitialization.h in Headers */,
 				389B3ED40FFD16F70070D43C /* AddressBook.h in Headers */,
+				389B409C0FFFF5220070D43C /* ABAddressBookUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +192,7 @@
 				389B3ECD0FFD16F70070D43C /* ABMultiValue.m in Sources */,
 				389B3ECF0FFD16F70070D43C /* ABPerson.m in Sources */,
 				389B3ED20FFD16F70070D43C /* ABRecord.m in Sources */,
+				389B409D0FFFF5220070D43C /* ABAddressBookUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
