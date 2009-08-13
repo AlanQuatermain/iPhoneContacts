@@ -38,6 +38,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AddressBook/ABMultiValue.h>
+#import <AddressBook/ABPerson.h>
 #import "ABRefInitialization.h"
 
 @interface ABMultiValue : NSObject <ABRefInitialization, NSCopying, NSMutableCopying>
@@ -54,6 +55,7 @@
 - (NSArray *) allValues;
 
 - (NSString *) labelAtIndex: (NSUInteger) index;
+- (NSString *) localizedLabelAtIndex: (NSUInteger) index;
 
 - (NSUInteger) indexForIdentifier: (ABMultiValueIdentifier) identifier;
 - (ABMultiValueIdentifier) identifierAtIndex: (NSUInteger) index;

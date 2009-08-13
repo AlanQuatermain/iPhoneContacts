@@ -106,6 +106,12 @@
     return ( [result autorelease] );
 }
 
+- (NSString *) localizedLabelAtIndex: (NSUInteger) index
+{
+    NSString * result = (NSString *) ABAddressBookCopyLocalizedLabel((CFStringRef)[self labelAtIndex: index] );
+    return ( [result autorelease] );
+}
+
 - (NSUInteger) indexForIdentifier: (ABMultiValueIdentifier) identifier
 {
     return ( (NSUInteger) ABMultiValueGetIndexForIdentifier(_ref, identifier) );
