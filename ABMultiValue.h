@@ -73,6 +73,7 @@
 
 - (BOOL) addValue: (id) value withLabel: (NSString *) label identifier: (ABMultiValueIdentifier *) outIdentifier;
 - (BOOL) insertValue: (id) value withLabel: (NSString *) label atIndex: (NSUInteger) index identifier: (ABMultiValueIdentifier *) outIdentifier;
+- (BOOL) addMultiValue: (ABMultiValue *)multivalue;
 
 - (BOOL) removeValueAndLabelAtIndex: (NSUInteger) index;
 

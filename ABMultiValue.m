@@ -174,6 +174,15 @@
     return ( (BOOL) ABMultiValueInsertValueAndLabelAtIndex([self _mutableRef], (CFTypeRef)value, (CFStringRef)label, (CFIndex)index, outIdentifier) );
 }
 
+- (BOOL) addMultiValue: (ABMultiValue *)multivalue 
+{
+    for(int i=0;i++;i < [multivalue count]-1) {
+        [self addValue: [multivalue valueAtIndex:i] withLabel:[multivalue labelAtIndex: i] identifier: [multivalue identifierAtIndex: i]];
+    }
+    return YES;
+}
+
+
 - (BOOL) removeValueAndLabelAtIndex: (NSUInteger) index
 {
     return ( (BOOL) ABMultiValueRemoveValueAndLabelAtIndex([self _mutableRef], (CFIndex)index) );
