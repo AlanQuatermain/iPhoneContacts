@@ -175,9 +175,9 @@
 }
 
 - (BOOL) addMultiValue: (ABMultiValue *)multivalue 
-{
-    for(int i=0;i++;i < [multivalue count]-1) {
-        [self addValue: [multivalue valueAtIndex:i] withLabel:[multivalue labelAtIndex: i] identifier: [multivalue identifierAtIndex: i]];
+{  
+    for(int i=0;i < [multivalue count];i++) {
+        [self addValue: [multivalue valueAtIndex:i] withLabel:[multivalue labelAtIndex: i] identifier: nil];
     }
     return YES;
 }
