@@ -198,4 +198,8 @@
     return ( (BOOL) ABMultiValueReplaceLabelAtIndex([self _mutableRef], (CFStringRef)label, (CFIndex)index) );
 }
 
+- (NSString*) description {
+    return [NSString stringWithFormat: @"ABMultiValue with %d elements",[self count]];
+}
+
 @end
