@@ -79,6 +79,7 @@ enum
 
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID;
 - (NSArray *) allPeople;
+- (NSArray *) allPeopleSorted;
 - (NSArray *) allPeopleWithName: (NSString *) name;
 
 @end

@@ -210,6 +210,34 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     return ( result );
 }
 
+- (NSArray *) allPeopleSorted
+{
+  CFArrayRef people = ABAddressBookCopyArrayOfAllPeople( _ref );
+  if ( CFArrayGetCount(people) == 0 )
+  {
+      CFRelease(people);
+      return ( nil );
+  }
+  
+  CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault,
+                                    CFArrayGetCount(people),
+                                    people
+                                    );
+  CFRelease(people);
+  CFArraySortValues(
+            peopleMutable,
+            CFRangeMake(0, CFArrayGetCount(peopleMutable)),
+            (CFComparatorFunction) ABPersonComparePeopleByName,
+            (void*) ABPersonGetSortOrdering()
+            );
+
+  NSArray *peopleSorted = (NSArray*)peopleMutable;
+  NSArray *result = WrappedArrayOfRecords( peopleSorted, [ABPerson class] );
+  [peopleSorted release];
+
+  return ( result );
+}
+
 - (NSArray *) allPeopleWithName: (NSString *) name
 {
     NSArray * people = (NSArray *) ABAddressBookCopyPeopleWithName( _ref, (CFStringRef)name );
