@@ -1,8 +1,8 @@
 /*
- * ABGroup.h
+ * ABSource.h
  * iPhoneContacts
  * 
- * Created by Jim Dovey on 6/6/2009.
+ * Created by David Beck on 4/3/2011.
  * 
  * Copyright (c) 2009 Jim Dovey
  * All rights reserved.
@@ -38,24 +38,13 @@
 
 
 #import <Foundation/Foundation.h>
-#import <AddressBook/ABGroup.h>
+#import <AddressBook/ABSource.h>
 #import "ABRecord.h"
 
-@class ABPerson;
-@class ABSource;
+@interface ABSource : ABRecord {
+    
+}
 
-@interface ABGroup : ABRecord
-
-// use -init to create a new group
-
-@property (nonatomic, readonly) ABSource *source;
-
-- (NSArray *) allMembers;
-- (NSArray *) allMembersSortedInOrder: (ABPersonSortOrdering) order;
-
-- (BOOL) addMember: (ABPerson *) person error: (NSError **) error;
-- (BOOL) removeMember: (ABPerson *) person error: (NSError **) error;
-
-- (NSIndexSet *) indexSetWithAllMemberRecordIDs;
+- (NSArray *) allGroups;
 
 @end

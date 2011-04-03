@@ -41,6 +41,7 @@
 #import "ABAddressBook.h"
 #import "ABPerson.h"
 #import "ABGroup.h"
+#import "ABSource.h"
 
 NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> wrapperClass )
 {
@@ -282,6 +283,43 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     NSArray * result = WrappedArrayOfRecords( groups, [ABGroup class] );
     [groups release];
+    
+    return ( result );
+}
+
+@end
+
+@implementation ABAddressBook (Sources)
+
+- (ABSource *) sourceWithRecordID: (ABRecordID) recordID
+{
+	ABRecordRef source = ABAddressBookGetSourceWithRecordID( _ref, recordID );
+    if ( source == NULL )
+        return ( nil );
+    
+    return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
+}
+
+- (ABSource *) defaultSource
+{
+	ABRecordRef source = ABAddressBookCopyDefaultSource( _ref );
+	if ( source == NULL )
+        return ( nil );
+    
+    return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
+}
+
+- (NSArray *) allSources
+{
+	NSArray * sources = (NSArray *) ABAddressBookCopyArrayOfAllSources( _ref );
+    if ( [sources count] == 0 )
+    {
+        [sources release];
+        return ( nil );
+    }
+    
+    NSArray * result = WrappedArrayOfRecords( sources, [ABSource class] );
+    [sources release];
     
     return ( result );
 }
