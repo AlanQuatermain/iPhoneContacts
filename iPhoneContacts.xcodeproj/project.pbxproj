@@ -24,6 +24,8 @@
 		389B40940FFFEFA50070D43C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389B40930FFFEFA50070D43C /* AddressBookUI.framework */; };
 		389B409C0FFFF5220070D43C /* ABAddressBookUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B409A0FFFF5220070D43C /* ABAddressBookUI.h */; };
 		389B409D0FFFF5220070D43C /* ABAddressBookUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B409B0FFFF5220070D43C /* ABAddressBookUI.m */; };
+		633CD00F1348DDC100A911BD /* ABSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 633CD00D1348DDC100A911BD /* ABSource.h */; };
+		633CD0101348DDC100A911BD /* ABSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CD00E1348DDC100A911BD /* ABSource.m */; };
 		AA747D9F0F9514B9006C5449 /* iPhoneContacts_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* iPhoneContacts_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		389B40930FFFEFA50070D43C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		389B409A0FFFF5220070D43C /* ABAddressBookUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddressBookUI.h; sourceTree = "<group>"; };
 		389B409B0FFFF5220070D43C /* ABAddressBookUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAddressBookUI.m; sourceTree = "<group>"; };
+		633CD00D1348DDC100A911BD /* ABSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABSource.h; sourceTree = "<group>"; };
+		633CD00E1348DDC100A911BD /* ABSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABSource.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* iPhoneContacts_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneContacts_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libAddressBookWrappers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAddressBookWrappers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +103,8 @@
 			children = (
 				389B3EBB0FFD16F70070D43C /* ABAddressBook.h */,
 				389B3EBC0FFD16F70070D43C /* ABAddressBook.m */,
+				633CD00D1348DDC100A911BD /* ABSource.h */,
+				633CD00E1348DDC100A911BD /* ABSource.m */,
 				389B3EBD0FFD16F70070D43C /* ABGroup.h */,
 				389B3EBE0FFD16F70070D43C /* ABGroup.m */,
 				389B3EBF0FFD16F70070D43C /* ABMultiValue.h */,
@@ -141,6 +147,7 @@
 				389B3ED30FFD16F70070D43C /* ABRefInitialization.h in Headers */,
 				389B3ED40FFD16F70070D43C /* AddressBook.h in Headers */,
 				389B409C0FFFF5220070D43C /* ABAddressBookUI.h in Headers */,
+				633CD00F1348DDC100A911BD /* ABSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +178,11 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "iPhoneContacts" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* iPhoneContacts */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -193,6 +204,7 @@
 				389B3ECF0FFD16F70070D43C /* ABPerson.m in Sources */,
 				389B3ED20FFD16F70070D43C /* ABRecord.m in Sources */,
 				389B409D0FFFF5220070D43C /* ABAddressBookUI.m in Sources */,
+				633CD0101348DDC100A911BD /* ABSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +253,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -254,7 +266,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

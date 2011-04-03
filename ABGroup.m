@@ -39,6 +39,7 @@
 
 #import "ABGroup.h"
 #import "ABPerson.h"
+#import "ABSource.h"
 
 extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> class );
 
@@ -54,6 +55,12 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     }
     
     return ( [self initWithABRef: group] );
+}
+
+- (ABSource *) source
+{
+	ABRecordRef source = ABGroupCopySource( _ref );
+	return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
 }
 
 - (NSArray *) allMembers

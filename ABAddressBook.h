@@ -40,7 +40,7 @@
 #import <AddressBook/ABAddressBook.h>
 #import "ABRefInitialization.h"
 
-@class ABRecord, ABPerson, ABGroup;
+@class ABRecord, ABPerson, ABGroup, ABSource;
 @protocol ABAddressBookDelegate;
 
 enum
@@ -90,6 +90,14 @@ enum
 
 - (ABGroup *) groupWithRecordID: (ABRecordID) recordID;
 - (NSArray *) allGroups;
+
+@end
+
+@interface ABAddressBook (Sources)
+
+- (ABSource *) sourceWithRecordID: (ABRecordID) recordID;
+- (ABSource *) defaultSource;
+- (NSArray *) allSources;
 
 @end
 
