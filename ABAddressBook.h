@@ -43,6 +43,8 @@
 @class ABRecord, ABPerson, ABGroup, ABSource;
 @protocol ABAddressBookDelegate;
 
+extern NSString *ABAddressBookDidChangeNotification;
+
 enum
 {
     ABOperationNotPermittedByStoreError = kABOperationNotPermittedByStoreError
