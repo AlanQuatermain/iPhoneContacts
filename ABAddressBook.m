@@ -139,7 +139,9 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 - (BOOL) save: (NSError **) error
 {
-    return ( (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error) );
+	BOOL result = (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error);
+	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
+    return ( result );
 }
 
 - (BOOL) hasUnsavedChanges
