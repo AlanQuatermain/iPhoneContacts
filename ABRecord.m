@@ -116,7 +116,9 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
     if ( wrapperClass != Nil )
         result = [[wrapperClass alloc] initWithABRef: value];
     else
-        result = (id) value;
+        result = [(id) value retain];
+	
+	CFRelease(value);
     
     return ( [result autorelease] );
 }
@@ -135,8 +137,11 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
 
 - (NSString *) compositeName
 {
-    NSString * result = (NSString *) ABRecordCopyCompositeName( _ref );
-    return ( [result autorelease] );
+    NSString * result = [(NSString *) ABRecordCopyCompositeName( _ref ) autorelease];
+	if (result == nil) {
+		result = @"";
+	}
+    return ( result );
 }
 
 @end

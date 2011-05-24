@@ -60,7 +60,9 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
 - (ABSource *) source
 {
 	ABRecordRef source = ABGroupCopySource( _ref );
-	return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
+	ABSource *sourceObj = [[[ABSource alloc] initWithABRef: source] autorelease];
+	CFRelease(source);
+	return ( sourceObj );
 }
 
 - (NSArray *) allMembers
