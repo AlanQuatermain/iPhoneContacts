@@ -43,6 +43,8 @@
 @interface ABPerson : ABRecord
 
 // use -init to create a new person
+@property (readonly, getter = getFirstName) NSString * firstName;
+@property (readonly, getter = getLastName) NSString * lastName;
 
 + (ABPropertyType) typeOfProperty: (ABPropertyID) property;
 + (NSString *) localizedNameOfProperty: (ABPropertyID) property;
@@ -51,10 +53,12 @@
 
 - (BOOL) setImageData: (NSData *) imageData error: (NSError **) error;
 - (NSData *) imageData;
+- (NSData *) thumbnailImageData;
 @property (nonatomic, readonly) BOOL hasImageData;
 - (BOOL) removeImageData: (NSError **) error;
 
 - (NSComparisonResult) compare: (ABPerson *) otherPerson;
 - (NSComparisonResult) compare: (ABPerson *) otherPerson sortOrdering: (ABPersonSortOrdering) order;
+
 
 @end
