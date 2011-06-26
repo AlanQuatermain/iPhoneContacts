@@ -43,6 +43,8 @@
 #import "ABGroup.h"
 #import "ABSource.h"
 
+NSString *ABAddressBookDidChangeNotification = @"ABAddressBookDidChange";
+
 NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> wrapperClass )
 {
     NSMutableArray * wrapped = [[NSMutableArray alloc] initWithCapacity: [records count]];
@@ -100,21 +102,19 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     // we can't to CFTypeID checking on AB types, so we have to trust the user
     _ref = (ABAddressBookRef) CFRetain(ref);
+	
+	ABAddressBookRegisterExternalChangeCallback( _ref, _ExternalChangeCallback, self );
     
     return ( self );
 }
 
 - (id) init
 {
-    if ( [super init] == nil )
-        return ( nil );
+    ABAddressBookRef ref = ABAddressBookCreate();
     
-    _ref = ABAddressBookCreate();
-    if ( _ref == NULL )
-    {
-        [self release];
-        return ( nil );
-    }
+	self = [self initWithABRef:ref];
+	
+	CFRelease(ref);
     
     return ( self );
 }
@@ -134,17 +134,14 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 - (void) setDelegate: (id<ABAddressBookDelegate>) delegate
 {
-    if ( (_delegate == nil) && (delegate != nil) )
-        ABAddressBookRegisterExternalChangeCallback( _ref, _ExternalChangeCallback, self );
-    else if ( (_delegate != nil) && (delegate == nil) )
-        ABAddressBookUnregisterExternalChangeCallback( _ref, _ExternalChangeCallback, self );
-    
     _delegate = delegate;
 }
 
 - (BOOL) save: (NSError **) error
 {
-    return ( (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error) );
+	BOOL result = (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error);
+	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
+    return ( result );
 }
 
 - (BOOL) hasUnsavedChanges
@@ -175,7 +172,10 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 - (void) _handleExternalChangeCallback
 {
-    [_delegate addressBookDidChange: self];
+    if(_delegate && [_delegate respondsToSelector:@selector(addressBookDidChange:)])
+        [_delegate addressBookDidChange: self];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
 }
 
 @end
@@ -185,6 +185,11 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 - (NSUInteger) personCount
 {
     return ( (NSUInteger) ABAddressBookGetPersonCount(_ref) );
+}
+
+-(ABPerson *) personWithRecordRef:(ABRecordRef) recordRef
+{
+    return ( [[[ABPerson alloc] initWithABRef: recordRef] autorelease] );    
 }
 
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID

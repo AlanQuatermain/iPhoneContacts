@@ -43,6 +43,8 @@
 @class ABRecord, ABPerson, ABGroup, ABSource;
 @protocol ABAddressBookDelegate;
 
+extern NSString *ABAddressBookDidChangeNotification;
+
 enum
 {
     ABOperationNotPermittedByStoreError = kABOperationNotPermittedByStoreError
@@ -78,6 +80,7 @@ enum
 @property (nonatomic, readonly) NSUInteger personCount;
 
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID;
+- (ABPerson *) personWithRecordRef:(ABRecordRef) recordRef;
 - (NSArray *) allPeople;
 - (NSArray *) allPeopleSorted;
 - (NSArray *) allPeopleWithName: (NSString *) name;
