@@ -187,6 +187,11 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     return ( (NSUInteger) ABAddressBookGetPersonCount(_ref) );
 }
 
+-(ABPerson *) personWithRecordRef:(ABRecordRef) recordRef
+{
+    return ( [[[ABPerson alloc] initWithABRef: recordRef] autorelease] );    
+}
+
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID
 {
     ABRecordRef person = ABAddressBookGetPersonWithRecordID( _ref, recordID );
