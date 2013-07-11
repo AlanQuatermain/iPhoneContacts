@@ -110,7 +110,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 - (id) init
 {
-    ABAddressBookRef ref = ABAddressBookCreate();
+    ABAddressBookRef ref = ABAddressBookCreateWithOptions(NULL, NULL);
     
 	self = [self initWithABRef:ref];
 	
