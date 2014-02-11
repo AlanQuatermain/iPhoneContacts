@@ -77,6 +77,12 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 + (ABAddressBook *) sharedAddressBook
 {
+    //if user has denied access to address book after previously allowing it
+    ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+    if(status == kABAuthorizationStatusDenied){
+        return nil;
+    }
+    
     static ABAddressBook * volatile __shared = nil;
     
     if ( __shared == nil )
